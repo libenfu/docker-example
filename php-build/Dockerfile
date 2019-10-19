@@ -49,7 +49,16 @@ RUN cd php-7.3.10 && ./configure --prefix=/usr/local/php7/ \
   --with-mysqli --without-pear --enable-pcntl --enable-bcmath \
   && make && make install
 
-RUN cp php-7.3.10/php.ini-production /usr/local/php7/etc/php.ini
+RUN tar xf  redis-4.0.0.tgz
+RUN cd redis-4.0.0 && phpize && ./configure  --with-php-config=/usr/local/php7/bin/php-config && make && make install
+
+RUN tar xf swoole-4.4.8.tgz 
+RUN cd swoole-4.4.8 && phpize && ./configure  --with-php-config=/usr/local/php7/bin/php-config && make && make install
+
+RUN tar xf mongodb-1.6.0.tgz 
+RUN cd mongodb-1.6.0 && phpize && ./configure  --with-php-config=/usr/local/php7/bin/php-config && make && make install
+
+COPY ./phpconf/php.ini /usr/local/php7/etc/php.ini
 RUN cp /usr/local/php7/etc/php-fpm.conf.default /usr/local/php7/etc/php-fpm.conf
 RUN cp /usr/local/php7/etc/php-fpm.d/www.conf.default /usr/local/php7/etc/php-fpm.d/www.conf
 

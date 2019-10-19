@@ -1,54 +1,53 @@
 version: "3.3"
 
 services:
-  nginx:
-    build: ./nginx
-    ports:
-      - "8899:80"
-    volumes:
-      - ./nginx/logs:/var/logs/nginx/:rw
-    networks:
-      - frontend
-
+    #  nginx:
+    #    build: ./nginx
+    #    ports:
+    #      - "8899:80"
+    #    volumes:
+    #      - ./nginx/logs:/var/logs/nginx/:rw
+    #    networks:
+    #      - frontend
+    #
   swoole:
     build: ./swoole
     ports:
       - "9501"
+        #tty: true
+        #entrypoint: top 
     networks:
       - frontend
       - backend
 
-  cgi:
-    build: ./cgi
+        #  cgi:
+        #    build: ./cgi
+        #    ports:
+        #      - "9000"
+        #    # tty: true
+        #    networks:
+        #      - frontend
+        #      - backend
+        #
+  mysql:
+    image: "mysql"
     ports:
-      - "9000"
-    # tty: true
+      - 3306
+    volumes:
+      - ./mysql:/data/mysql 
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/logs:/logs
+      - ./mysql/data:/var/lib/mysql 
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
     networks:
-      - frontend
       - backend
-
-  nodejs:
-    build: ./nodejs
+  redis:
+    image: "redis"
     ports:
-      - "3000"
+      - 6379
     networks:
-      - frontend
-      - backend
-
-  # mysql:
-  #   image: "mysql"
-  #   ports:
-  #     - 3306
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=123456
-  #   networks:
-  #     - backend
-  # redis:
-  #   image: "redis"
-  #   ports:
-  #     - 6379
-  #   networks:
-  #     - backend
+     - backend
 
 networks:
   frontend:

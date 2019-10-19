@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name nodejs.demo.com;
+    location / {
+        proxy_pass http://nodejs:3000;
+    }
+
+    access_log  /var/log/nginx/nodejs.access.log;
+    error_log  /var/log/nginx/nodejs.error.log;
+}
