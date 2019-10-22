@@ -11,13 +11,15 @@ services:
     #      - frontend
     #
   swoole:
-    build: ./swoole
+    build: ./MyExchange
     ports:
-      - "9501"
-        #tty: true
-        #entrypoint: top 
+        #固定 对外 端口访问 否则 随机端口
+      - "9501:9501"
+    tty: true
+    entrypoint: top   
+    volumes:  
+      - ./MyExchange:/data/exchange
     networks:
-      - frontend
       - backend
 
         #  cgi:
@@ -30,9 +32,9 @@ services:
         #      - backend
         #
   mysql:
-    image: "mysql"
+    image: "mysql:5.7"
     ports:
-      - 3306
+      - "3306:3306"
     volumes:
       - ./mysql:/data/mysql 
       - ./mysql/conf:/etc/mysql/conf.d
@@ -45,10 +47,9 @@ services:
   redis:
     image: "redis"
     ports:
-      - 6379
+      - "6379:6379"
     networks:
-     - backend
+      - backend
 
 networks:
-  frontend:
   backend:

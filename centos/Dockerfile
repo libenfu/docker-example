@@ -23,6 +23,10 @@ RUN yum install -y \
   readline-devel libxslt-devel expat-devel \
   xmlrpc-c xmlrpc-c-devel make cmake
 
+RUN yum install -y epel-release
+
+RUN yum install -y redis mysql
+
 # Install libmcrypt manually
 RUN tar zxf libmcrypt-2.5.7.tar.gz
 RUN cd libmcrypt-2.5.7 && ./configure &&  make && make install
