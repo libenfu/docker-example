@@ -30,3 +30,12 @@ RUN yum install -y redis mysql
 # Install libmcrypt manually
 RUN tar zxf libmcrypt-2.5.7.tar.gz
 RUN cd libmcrypt-2.5.7 && ./configure &&  make && make install
+
+
+# node 
+RUN tar zxf node-v13.2.0-linux-x64.tar.gz
+RUN cd node-v13.2.0-linux-x64
+
+RUN ln -s /data/node-v13.2.0-linux-x64/bin/node /usr/bin/node
+RUN ln -s /data/node-v13.2.0-linux-x64/bin/npm /usr/bin/npm
+

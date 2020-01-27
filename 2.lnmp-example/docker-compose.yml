@@ -9,18 +9,7 @@ services:
       - ./nginx/logs:/var/logs/nginx/:rw
     networks:
       - backend
-    
-        #swoole:
-        #build: ./MyExchange
-        #ports:
-        #固定 对外 端口访问 否则 随机端口
-        #- "9501:9501"
-        #tty: true
-        #entrypoint: top   
-        #volumes:  
-        #- ./MyExchange:/data/exchange
-        #networks:
-        #- backend
+
   cgi:
     build: ./cgi
     ports:
