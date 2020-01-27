@@ -1,0 +1,41 @@
+server
+{
+  listen 80;
+
+  server_name cgi.demo.com;
+
+  index index.php index.html index.htm;
+
+  root /var/www/public;
+
+  location / {
+
+	if ( !-e $request_filename ) {
+		rewrite  ^(.*)$  /index.php?s=$1  last;
+		break;
+	}
+  }
+
+  location ~ [^/]\.php(/|$)
+  {
+      try_files $uri =404;
+      fastcgi_index index.php;
+	  #fastcgi_pass  unix:/tmp/php-cgi.sock;
+      fastcgi_pass  cgi:9000;
+	  #include       fastcgi_params;
+      include fastcgi.conf;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param SCRIPT_NAME     $fastcgi_script_name;
+  }
+
+  location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+  {
+      expires      1d;
+  }
+
+  location ~ .*\.(js|css)?$
+  {
+      expires      1h;
+  }
+
+}

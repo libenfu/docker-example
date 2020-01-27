@@ -72,7 +72,7 @@ class App
      * @access public
      * @param  Request $request 请求对象
      * @return Response
-     * @throws Exception
+     * @throws
      */
     public static function run(Request $request = null)
     {
