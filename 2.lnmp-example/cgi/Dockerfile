@@ -18,9 +18,13 @@ ENTRYPOINT [ "php-fpm" ]
 COPY ./deps/composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
 
+# node npm bower
 RUN rm /usr/bin/node /usr/bin/npm
+
+RUN cd /data/node-v13.2.0-linux-x64
 RUN ln -s /data/node-v13.2.0-linux-x64/bin/node /usr/bin/node
 RUN ln -s /data/node-v13.2.0-linux-x64/bin/npm /usr/bin/npm
 
 RUN npm install -g bower --registry=https://registry.npm.taobao.org
 
+RUN ln -s /data/node-v13.2.0-linux-x64/lib/node_modules/bower/bin/bower /usr/bin/bower
