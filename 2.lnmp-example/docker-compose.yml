@@ -1,36 +1,36 @@
 version: "3.3"
 
 services:
-    #  nginx:
-    #    build: ./nginx
-    #    ports:
-    #      - "8899:80"
-    #    volumes:
-    #      - ./nginx/logs:/var/logs/nginx/:rw
-    #    networks:
-    #      - frontend
-    #
-  swoole:
-    build: ./MyExchange
+  nginx:
+    build: ./nginx
     ports:
-        #固定 对外 端口访问 否则 随机端口
-      - "9501:9501"
-    tty: true
-    entrypoint: top   
-    volumes:  
-      - ./MyExchange:/data/exchange
+      - "8899:80"
+    volumes:
+      - ./nginx/logs:/var/logs/nginx/:rw
     networks:
       - backend
+    
+        #swoole:
+        #build: ./MyExchange
+        #ports:
+        #固定 对外 端口访问 否则 随机端口
+        #- "9501:9501"
+        #tty: true
+        #entrypoint: top   
+        #volumes:  
+        #- ./MyExchange:/data/exchange
+        #networks:
+        #- backend
+  cgi:
+    build: ./cgi
+    ports:
+      - "9000"
+    tty: true
+    volumes:  
+      - ./cgi/MyAdmin:/var/www
+    networks:
+       - backend
 
-        #  cgi:
-        #    build: ./cgi
-        #    ports:
-        #      - "9000"
-        #    # tty: true
-        #    networks:
-        #      - frontend
-        #      - backend
-        #
   mysql:
     image: "mysql:5.7"
     ports:
