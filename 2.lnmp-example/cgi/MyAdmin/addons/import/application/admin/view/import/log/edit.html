@@ -1,0 +1,46 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+ <div class="page-header">
+   导入结果 
+</div>
+ 
+ 目标表：{$row['table']}</br>
+ 从第{$row.row|htmlentities}行开始导入</br>
+ 匹配方式：{$row['head_type']=='comment'?'注释':'字段名'}</br>
+ 导入文件：<a href="{$row['path']}">{$row['path']}</a></br>
+ 导入结果：{$row['status']=='hidden'?'未导入':'已导入'}   </br>
+
+<input type="hidden" name="row[table]" value="{$row['table']}">
+<input type="hidden" name="row[row]" value="{$row['row']}">
+<input type="hidden"  name="row[head_type]" value="{$row['head_type']}">
+<input type="hidden"  name="row[path]" value="{$row['path']}">
+<input  type="hidden" name="row[new_table]" value="">
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+        <button type="submit" id="submit" class="btn btn-success btn-embossed "  >{:__('查看结果')} </button>
+        </div>
+    </div>
+    <div class="panel-heading" style="padding:10px 0">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#one" data-value="" data-toggle="tab">{:__('匹配结果')}</a></li>
+            <li class=""><a href="#two" data-value="" data-toggle="tab">{:__('数据预览')}</a></li>
+        </ul>
+    </div>
+    <div  class="tab-content">
+        <div class="tab-pane fade active in" id="one">
+            <div class="widget-body no-padding">
+                <table id="tableField" class="table table-striped table-bordered table-hover table-nowrap" width="100%">
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="two">
+            <div class="widget-body no-padding">
+
+                <table id="table" class="table table-striped table-bordered table-hover table-nowrap" width="100%">
+                </table>
+            </div>
+        </div>
+
+    </div>
+</form>	

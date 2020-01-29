@@ -1,0 +1,39 @@
+<div class="panel panel-default panel-intro">
+    
+	<style>.nav li a{position:relative; padding-right: 30px;}
+	.nav li a small{position:absolute;right:5px;top:5px}
+	</style>
+    <div class="panel-heading">
+        {:build_heading(null,FALSE)}
+        <ul class="nav nav-tabs" data-field="status">
+            <li class="active"><a href="#t-all" data-value="" data-toggle="tab">{:__('All')}</a></li>
+            {foreach name="statusList" item="vo"}
+            <li><a href="#t-{$key}" data-value="{$key}" data-toggle="tab">{$vo}{eq name="key" value="hidden"} <small class="badge pull-right bg-red">{$hidden_num}</small> {/eq}</a>
+			
+</li>
+            {/foreach}
+        </ul>
+    </div>
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        <a href="javascript:;" class="btn btn-primary btn-refresh" title="{:__('Refresh')}" ><i class="fa fa-refresh"></i> </a>
+                        <a href="javascript:;" data-area='["1000px","800px"]' class="btn btn-success btn-add {:$auth->check('import/log/add')?'':'hide'}" title="{:__('Add')}" ><i class="fa fa-plus"></i> {:__('Add')}</a>
+                       
+                        <a href="javascript:;" class="btn btn-danger btn-del btn-disabled disabled {:$auth->check('import/log/del')?'':'hide'}" title="{:__('Delete')}" ><i class="fa fa-trash"></i> {:__('Delete')}</a>
+
+                    </div>
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('import/log/edit')}" 
+                           data-operate-del="{:$auth->check('import/log/del')}" 
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

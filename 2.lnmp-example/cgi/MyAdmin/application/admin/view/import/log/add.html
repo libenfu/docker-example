@@ -1,0 +1,87 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Table')}:</label>
+        <div class="col-xs-12 col-sm-8" id="selectable">
+            {:Form::select('row[table]', $tableList, '', [])}
+            <span id="helpBlock" class="help-block">可导入表请到该插件配置里设置</span>
+        </div>
+    </div>
+    <div class="hidden">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-2">{:__('NewTable')}:</label>
+            <div class="col-xs-12 col-sm-8">
+                <input id="c-newtable" class="form-control" name="row[newtable]" placeholder="不新建則留空，不需要前缀" type="text">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Row')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-row" class="form-control" name="row[row]" type="number" value=2>
+            <span id="helpBlock" class="help-block">该行的上一行为匹配行</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Head_type')}:</label>
+        <div class="col-xs-12 col-sm-8" id="selecthead_type">
+            {:Form::select('row[head_type]', ['comment'=>'注释', 'name'=>'字段名'], 'comment', ['data-rule'=>'required'])}
+            <span id="helpBlock" class="help-block"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('path')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::upload('row[path]', '', ['data-rule'=>'required'])}
+        </div>
+    </div>
+    <input id="step" type="hidden" name="row[step]" type="number" value=0>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="hidden"><button type="submit" id="submit" class="btn btn-success btn-embossed">{:__('预览')}</button></div>
+            <button id="import" class="btn btn-success" style="display:none">{:__('开始导入')}</button>
+        </div>
+    </div>
+</form>
+
+<div class="panel-heading" style="padding:10px 0">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#one" data-value="" data-toggle="tab">{:__('匹配结果')}</a></li>
+        <li class=""><a href="#two" data-value="" data-toggle="tab">{:__('数据预览')}</a></li>
+    </ul>
+</div>
+<div  class="tab-content">
+    <div class="tab-pane fade active in" id="one">
+        <div class="widget-body no-padding">
+            <table id="tableField" class="table table-striped table-bordered table-hover table-nowrap" width="100%">
+            </table>
+
+
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="two">
+        <div class="widget-body no-padding">
+
+            <table id="table" class="table table-striped table-bordered table-hover table-nowrap" width="100%">
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<style>
+    select.input-sm {
+        height: 28px;
+        line-height: 15px;
+    }
+    .popover-content {
+        padding: 9px 29px;
+    }
+</style>
