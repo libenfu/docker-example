@@ -10,7 +10,7 @@ COPY --chown=www:www ./config/php-fpm.conf /usr/local/php7/etc/
 COPY --chown=www:www ./config/php.ini /usr/local/php7/etc/
 
 # 代码复制到容器内
-COPY ./MyAdmin /var/www
+COPY ./FastAdmin /var/www
 
 ENTRYPOINT [ "php-fpm" ]
 

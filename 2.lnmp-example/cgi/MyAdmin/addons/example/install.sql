@@ -14,8 +14,7 @@ CREATE TABLE IF NOT EXISTS `__PREFIX__area` (
   `lat` varchar(100) DEFAULT NULL COMMENT '纬度',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3750 DEFAULT CHARSET=utf8 COMMENT='地区表' ROW_FORMAT=DYNAMIC;
-
+) ENGINE=InnoDB AUTO_INCREMENT=3750 DEFAULT CHARSET=utf8 COMMENT='地区表';
 
 BEGIN;
 INSERT INTO `__PREFIX__area` (`id`, `pid`, `shortname`, `name`, `mergename`, `level`, `pinyin`, `code`, `zip`, `first`, `lng`, `lat`) VALUES

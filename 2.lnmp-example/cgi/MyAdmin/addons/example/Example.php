@@ -57,6 +57,7 @@ class Example extends Addons
                         'name'    => 'example/tablelink',
                         'title'   => '表格联动示例',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '点击左侧日志列表，右侧的表格数据会显示指定管理员的日志列表',
                         'sublist' => [
                             ['name' => 'example/tablelink/index', 'title' => '查看'],
                         ]
@@ -65,6 +66,7 @@ class Example extends Addons
                         'name'    => 'example/colorbadge',
                         'title'   => '彩色角标',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '左侧彩色的角标会根据当前数据量的大小进行更新',
                         'sublist' => [
                             ['name' => 'example/colorbadge/index', 'title' => '查看'],
                             ['name' => 'example/colorbadge/del', 'title' => '删除'],
@@ -75,6 +77,7 @@ class Example extends Addons
                         'name'    => 'example/controllerjump',
                         'title'   => '控制器间跳转',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '点击IP地址可以跳转到新的选项卡中查看指定IP的数据',
                         'sublist' => [
                             ['name' => 'example/controllerjump/index', 'title' => '查看'],
                             ['name' => 'example/controllerjump/del', 'title' => '删除'],
@@ -85,6 +88,7 @@ class Example extends Addons
                         'name'    => 'example/cxselect',
                         'title'   => '多级联动',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '基于jquery.cxselect实现的多级联动',
                         'sublist' => [
                             ['name' => 'example/cxselect/index', 'title' => '查看'],
                             ['name' => 'example/cxselect/del', 'title' => '删除'],
@@ -95,6 +99,7 @@ class Example extends Addons
                         'name'    => 'example/multitable',
                         'title'   => '多表格示例',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '展示在一个页面显示多个Bootstrap-table表格',
                         'sublist' => [
                             ['name' => 'example/multitable/index', 'title' => '查看'],
                             ['name' => 'example/multitable/del', 'title' => '删除'],
@@ -105,6 +110,7 @@ class Example extends Addons
                         'name'    => 'example/relationmodel',
                         'title'   => '关联模型示例',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '列表中的头像、用户名和昵称字段均从关联表中取出',
                         'sublist' => [
                             ['name' => 'example/relationmodel/index', 'title' => '查看'],
                             ['name' => 'example/relationmodel/del', 'title' => '删除'],
@@ -115,6 +121,7 @@ class Example extends Addons
                         'name'    => 'example/tabletemplate',
                         'title'   => '表格模板示例',
                         'icon'    => 'fa fa-table',
+                        'remark'  => '',
                         'sublist' => [
                             ['name' => 'example/tabletemplate/index', 'title' => '查看'],
                             ['name' => 'example/tabletemplate/detail', 'title' => '详情'],
@@ -130,6 +137,14 @@ class Example extends Addons
                             ['name' => 'example/baidumap/index', 'title' => '查看'],
                             ['name' => 'example/baidumap/map', 'title' => '详情'],
                             ['name' => 'example/baidumap/del', 'title' => '删除'],
+                        ]
+                    ],
+                    [
+                        'name'    => 'example/echarts',
+                        'title'   => '统计图表示例',
+                        'icon'    => 'fa fa-bar-chart',
+                        'sublist' => [
+                            ['name' => 'example/echarts/index', 'title' => '查看'],
                         ]
                     ],
                 ]
@@ -148,7 +163,7 @@ class Example extends Addons
         Menu::delete('example');
         return true;
     }
-    
+
     /**
      * 插件启用方法
      */

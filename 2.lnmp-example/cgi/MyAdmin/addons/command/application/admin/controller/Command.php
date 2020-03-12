@@ -51,7 +51,8 @@ class Command extends Backend
      */
     public function get_field_list()
     {
-        $dbname = Config::get('database.database');
+//        $dbname = Config::get('database.database');
+        $dbname = Config::get('money_db');
         $prefix = Config::get('database.prefix');
         $table = $this->request->request('table');
         //从数据库中获取表字段信息
